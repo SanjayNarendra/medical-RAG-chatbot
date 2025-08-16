@@ -7,11 +7,11 @@ logger = get_logger(__name__)
 
 def get_embedding_model():
     try:
-        logger.info("Intializing our Huggingface embedding model")
+        logger.info("Intializing Huggingface embedding model...")
 
         model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-        logger.info("Huggingface embedding model loaded sucesfully....")
+        logger.info("Huggingface embedding model loaded successfully")
 
         return model
     

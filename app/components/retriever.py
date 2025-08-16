@@ -11,7 +11,11 @@ from app.common.custom_exception import CustomException
 
 logger = get_logger(__name__)
 
-CUSTOM_PROMPT_TEMPLATE = """ Answer the following medical question in 2 to 3 lines maximum using only the information provided in the context.
+CUSTOM_PROMPT_TEMPLATE = """You are a helpful medical assistant. 
+
+Instructions:
+- Answer each question in 2–3 short and clear sentences using the context provided below. You may use general medical knowledge **only to clarify or explain**, but do not invent treatments, statistics, or data not in the context.
+- If you are unsure or context is missing, respond with: "I'm not sure based on the provided information."
 
 Context:
 {context}
@@ -33,7 +37,7 @@ def create_qa_chain():
         if db is None:
             raise CustomException("Vector store not present or empty")
 
-        llm = load_llm(huggingface_repo_id=HUGGINGFACE_REPO_ID, hf_token=HF_TOKEN )
+        llm = load_llm()
 
         if llm is None:
             raise CustomException("LLM not loaded")
@@ -52,6 +56,7 @@ def create_qa_chain():
     except Exception as e:
         error_message = CustomException("Failed to create a QA chain", e)
         logger.error(str(error_message))
+        return None
 
 
 

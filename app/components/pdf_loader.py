@@ -14,7 +14,7 @@ def load_pdf_files():
         if not os.path.exists(DATA_PATH):
             raise CustomException("Data path doesnt exist")
         
-        logger.info(f"Loading files from {DATA_PATH}")
+        logger.info(f"Loading files from {DATA_PATH}...")
 
         loader = DirectoryLoader(DATA_PATH, glob="*.pdf", loader_cls=PyPDFLoader)
         documents = loader.load()
@@ -22,7 +22,7 @@ def load_pdf_files():
         if not documents:
             logger.warning("No pdfs were found")
         else:
-            logger.info(f"Sucesfully fetched {len(documents)} documents")
+            logger.info(f"Successfully fetched {len(documents)} documents")
         return documents
     
     except Exception as e:
@@ -36,7 +36,7 @@ def create_text_chunks(documents):
         if not documents:
             raise CustomException("No documents were found")
         
-        logger.info(f"Splitting {len(documents)} documents into chunks")
+        logger.info(f"Splitting {len(documents)} documents into chunks...")
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
 

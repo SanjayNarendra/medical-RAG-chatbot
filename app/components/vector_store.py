@@ -33,13 +33,13 @@ def save_vector_store(text_chunks):
         if not text_chunks:
             raise CustomException("No chunks were found")
         
-        logger.info("Generating new vector store")
+        logger.info("Generating new vector store...")
 
         embedding_model = get_embedding_model()
 
         db = FAISS.from_documents(text_chunks, embedding_model)
 
-        logger.info("Saving vector store")
+        logger.info("Saving vector store...")
 
         db.save_local(DB_FAISS_PATH)
 

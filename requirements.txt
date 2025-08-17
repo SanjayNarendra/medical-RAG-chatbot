@@ -1,3 +1,4 @@
+torch==2.8.0+cpu
 langchain
 langchain_community
 langchain_huggingface
@@ -5,6 +6,6 @@ langchain_groq
 faiss-cpu
 pypdf
 huggingface_hub
-sentence-transformers
+sentence-transformers==5.1.0
 flask
 python-dotenv

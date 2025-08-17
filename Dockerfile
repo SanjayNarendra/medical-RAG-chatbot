@@ -3,7 +3,8 @@ FROM python:3.10-slim
 
 ## Essential environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PIP_EXTRA_INDEX_URL=https://download.pytorch.org/whl/cpu
 
 ## Work directory inside the docker container
 WORKDIR /app
